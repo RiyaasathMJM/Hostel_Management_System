@@ -24,3 +24,4 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $conn->error;
 }
+?>
