@@ -19,3 +19,4 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 
     echo "<a href='dashboard_admin.php'>Go Back</a>";
 }
+?>
