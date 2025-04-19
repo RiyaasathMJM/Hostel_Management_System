@@ -22,3 +22,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     echo "<a href='dashboard_admin.php'>Go Back</a>";
 }
+?>
