@@ -1,35 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>LOGIN PAGE</h2>
-<form action="index.php" method="post">
-    <label>Username</label><br>
-    <input type="text" name="name"><br><br>
-
-    <label>Password</label><br>
-    <input type="password" name="password"><br><br>
-
-    <!-- Role selection radio buttons -->
-    <label>Select Role:</label><br>
-    <input type="radio" name="role" value="student" id="student">
-    <label for="student">Student</label><br>
-
-    <input type="radio" name="role" value="staff" id="staff">
-    <label for="staff">Staff</label><br>
-
-    <input type="radio" name="role" value="admin" id="admin">
-    <label for="admin">Admin</label><br><br>
-
-    <input type="submit" value="Submit"><br>
-</form>
-<br>
-
-    <a href="index.php">Back</a>
-</body>
-</html>
+<?php
+include("login.html");
+?>
