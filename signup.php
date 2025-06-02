@@ -23,22 +23,27 @@ function registerStaff($conn) {
     $department = $_POST['st_department'];
     $gender = $_POST['st_gender'];
     $role = $_POST['st_role'];
+    $email = $_POST['st_email'];
+    $contact_no = $_POST['st_contact_no'];
     $username = $_POST['st_username'];
     $password = password_hash($_POST['st_password'], PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO staff (name, role, department, gender, username, password)
-                            VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $name, $role, $department, $gender, $username, $password);
+    $stmt = $conn->prepare("INSERT INTO staff (name, role, department, gender, email, contact_no, username, password)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssss", $name, $role, $department, $gender, $email, $contact_no, $username, $password);
     return $stmt->execute() ? "Staff registered successfully!" : "Staff registration failed.";
 }
 
 function registerAdmin($conn) {
     $name = $_POST['a_name'];
+    $email = $_POST['a_email'];
+    $contact_no = $_POST['a_contact_no'];
     $username = $_POST['a_username'];
     $password = password_hash($_POST['a_password'], PASSWORD_DEFAULT);
 
-    $stmt = $conn->prepare("INSERT INTO admin (name, username, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $name, $username, $password);
+    $stmt = $conn->prepare("INSERT INTO admin (name, email, contact_no, username, password)
+                            VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("sssss", $name, $email, $contact_no, $username, $password);
     return $stmt->execute() ? "Admin registered successfully!" : "Admin registration failed.";
 }
 
@@ -72,7 +77,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h2>Signup</h2>
 
-<p style="color: green;"><?php echo $message; ?></p>
+<p style="color: green;">
+    <?php echo $message; ?>
+</p>
 
 <label><input type="radio" name="user_type" value="student" onclick="showForm('student')"> Student</label>
 <label><input type="radio" name="user_type" value="staff" onclick="showForm('staff')"> Staff</label>
@@ -116,6 +123,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <option value="Interdisciplinary Department">Interdisciplinary Department</option>
     </select><br>
     Gender: <select name="st_gender"><option>M</option><option>F</option></select><br>
+    Email: <input type="email" name="st_email" required><br>
+    Contact No: <input type="text" name="st_contact_no" required><br>
     Username: <input type="text" name="st_username" required><br>
     Password: <input type="password" name="st_password" required><br>
     <button type="submit">Register Staff</button>
@@ -126,6 +135,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="hidden" name="user_type" value="admin">
     <h3>Admin Signup</h3>
     Name: <input type="text" name="a_name" required><br>
+    Email: <input type="email" name="a_email" required><br>
+    Contact No: <input type="text" name="a_contact_no" required><br>
     Username: <input type="text" name="a_username" required><br>
     Password: <input type="password" name="a_password" required><br>
     <button type="submit">Register Admin</button>
@@ -149,3 +160,4 @@ function showForm(type) {
 
 </body>
 </html>
+
