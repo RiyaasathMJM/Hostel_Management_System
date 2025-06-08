@@ -1,7 +1,12 @@
 <?php
 include("db_connect.php");
 
+
+
+
 function registerStudent($conn) {
+
+    
     $name = $_POST['s_name'];
     $department = $_POST['s_department'];
     $gender = $_POST['s_gender'];
@@ -14,6 +19,11 @@ function registerStudent($conn) {
 
     $stmt = $conn->prepare("INSERT INTO student (name, department, gender, address, contact_no, year_of_study, email, username, password)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+if(!ctype_digit($contact_no) || strlen($contact_no)!=10){
+    return "Invalid contact number!";
+}
+
     $stmt->bind_param("sssssssss", $name, $department, $gender, $address, $contact_no, $year, $email, $username, $password);
     return $stmt->execute() ? "Student registered successfully!" : "Student registration failed.";
 }
@@ -30,11 +40,22 @@ function registerStaff($conn) {
 
     $stmt = $conn->prepare("INSERT INTO staff (name, role, department, gender, email, contact_no, username, password)
                             VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
+if(!ctype_digit($contact_no) || strlen($contact_no)!=10){
+    return "Invalid contact number!";
+}
+
     $stmt->bind_param("ssssssss", $name, $role, $department, $gender, $email, $contact_no, $username, $password);
     return $stmt->execute() ? "Staff registered successfully!" : "Staff registration failed.";
 }
 
 function registerAdmin($conn) {
+
+    $key=$_POST['a_key'];
+    if ($key !=4444){
+        return "Invalid verification key!";
+    }
+
     $name = $_POST['a_name'];
     $email = $_POST['a_email'];
     $contact_no = $_POST['a_contact_no'];
@@ -43,6 +64,12 @@ function registerAdmin($conn) {
 
     $stmt = $conn->prepare("INSERT INTO admin (name, email, contact_no, username, password)
                             VALUES (?, ?, ?, ?, ?)");
+    
+    if(!ctype_digit($contact_no) || strlen($contact_no)!=10){
+        return "Invalid contact number!";
+    }
+
+
     $stmt->bind_param("sssss", $name, $email, $contact_no, $username, $password);
     return $stmt->execute() ? "Admin registered successfully!" : "Admin registration failed.";
 }
@@ -74,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </head>
 <body>
-
+   
 <h2>Signup</h2>
 
 <p style="color: green;">
@@ -139,6 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     Contact No: <input type="text" name="a_contact_no" required><br>
     Username: <input type="text" name="a_username" required><br>
     Password: <input type="password" name="a_password" required><br>
+    Verification key: <input type="password" name="a_key"reqiured><br>
     <button type="submit">Register Admin</button>
 </form>
 
