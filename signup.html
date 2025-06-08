@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi Signup</title>
+    <style>
+        .form-section { display: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<h2>Signup</h2>
+
+<p style="color: green;">
+    <?php echo $message; ?>
+</p>
+
+<label><input type="radio" name="user_type" value="student" onclick="showForm('student')"> Student</label>
+<label><input type="radio" name="user_type" value="staff" onclick="showForm('staff')"> Staff</label>
+<label><input type="radio" name="user_type" value="admin" onclick="showForm('admin')"> Admin</label>
+
+<!-- Student Form -->
+<form method="post" class="form-section" id="studentForm">
+    <input type="hidden" name="user_type" value="student">
+    <h3>Student Signup</h3>
+    Name: <input type="text" name="s_name" required><br>
+    Department:
+    <select name="s_department" required>
+        <option value="Computer Department">Computer Department</option>
+        <option value="Civil Department">Civil Department</option>
+        <option value="EEE Department">EEE Department</option>
+        <option value="Mechanical Department">Mechanical Department</option>
+        <option value="Interdisciplinary Department">Interdisciplinary Department</option>
+    </select><br>
+    Gender: <select name="s_gender"><option>M</option><option>F</option></select><br>
+    Address: <input type="text" name="s_address" required><br>
+    Contact No: <input type="text" name="s_contact_no" required><br>
+    Year of Study: <input type="number" name="s_year" required><br>
+    Email: <input type="email" name="s_email" required><br>
+    Username: <input type="text" name="s_username" required><br>
+    Password: <input type="password" name="s_password" required><br>
+    <button type="submit">Register Student</button>
+</form>
+
+<!-- Staff Form -->
+<form method="post" class="form-section" id="staffForm">
+    <input type="hidden" name="user_type" value="staff">
+    <h3>Staff Signup</h3>
+    Name: <input type="text" name="st_name" required><br>
+    Role: <input type="text" name="st_role" required><br>
+    Department:
+    <select name="st_department" required>
+        <option value="Computer Department">Computer Department</option>
+        <option value="Civil Department">Civil Department</option>
+        <option value="EEE Department">EEE Department</option>
+        <option value="Mechanical Department">Mechanical Department</option>
+        <option value="Interdisciplinary Department">Interdisciplinary Department</option>
+    </select><br>
+    Gender: <select name="st_gender"><option>M</option><option>F</option></select><br>
+    Email: <input type="email" name="st_email" required><br>
+    Contact No: <input type="text" name="st_contact_no" required><br>
+    Username: <input type="text" name="st_username" required><br>
+    Password: <input type="password" name="st_password" required><br>
+    <button type="submit">Register Staff</button>
+</form>
+
+<!-- Admin Form -->
+<form method="post" class="form-section" id="adminForm">
+    <input type="hidden" name="user_type" value="admin">
+    <h3>Admin Signup</h3>
+    Name: <input type="text" name="a_name" required><br>
+    Email: <input type="email" name="a_email" required><br>
+    Contact No: <input type="text" name="a_contact_no" required><br>
+    Username: <input type="text" name="a_username" required><br>
+    Password: <input type="password" name="a_password" required><br>
+    <button type="submit">Register Admin</button>
+</form>
+
+<script>
+function showForm(type) {
+    document.getElementById("studentForm").style.display = "none";
+    document.getElementById("staffForm").style.display = "none";
+    document.getElementById("adminForm").style.display = "none";
+
+    if (type === "student") {
+        document.getElementById("studentForm").style.display = "block";
+    } else if (type === "staff") {
+        document.getElementById("staffForm").style.display = "block";
+    } else if (type === "admin") {
+        document.getElementById("adminForm").style.display = "block";
+    }
+}
+</script>
+
+</body>
+</html>
