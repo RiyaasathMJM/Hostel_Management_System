@@ -1,34 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
-    <h2>LOGIN PAGE</h2>
-<form action="index.php" method="post">
-    <label>Username</label><br>
-    <input type="text" name="name"><br><br>
+    <h2>Login</h2>
 
-    <label>Password</label><br>
-    <input type="password" name="password"><br><br>
+    <form method="post" action="login.php">
+        <label>User Type:</label><br>
+        <select name="user_type" required>
+            <option value="student">Student</option>
+            <option value="staff">Staff</option>
+            <option value="admin">Admin</option>
+        </select><br><br>
 
-    <!-- Role selection radio buttons -->
-    <label>Select Role:</label><br>
-    <input type="radio" name="role" value="student" id="student">
-    <label for="student">Student</label><br>
+        <label>Username:</label><br>
+        <input type="text" name="username" required><br><br>
 
-    <input type="radio" name="role" value="staff" id="staff">
-    <label for="staff">Staff</label><br>
+        <label>Password:</label><br>
+        <input type="password" name="password" required><br><br>
 
-    <input type="radio" name="role" value="admin" id="admin">
-    <label for="admin">Admin</label><br><br>
+        <button type="submit">Login</button>
+    </form>
 
-    <input type="submit" value="Submit"><br>
-</form>
-<br>
-
-    <a href="index.php">Back</a>
+    <p style="color: red;">
+        <?php if (isset($_GET['error'])) echo htmlspecialchars($_GET['error']); ?>
+    </p>
 </body>
 </html>
+
