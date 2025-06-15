@@ -21,4 +21,4 @@ $result = $stmt->get_result();
 <?php else: ?>
     <p>No room allocated yet.</p>
 <?php endif; ?>
-<a href="student_dashboard.php">Back</a>
+<a href="<?php echo ($_SESSION['user_type'] === 'student') ? 'student_dashboard.php' : 'staff_dashboard.php'; ?>">Back</a>
