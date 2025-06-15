@@ -17,8 +17,8 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
     <ul>
         <li><a href="view_room_details.php">View Room Details</a></li>
         <li><a href="view_payment_info.php">View Payment Info</a></li>
-        <li><a href="#">Submit Request</a></li>
-        <li><a href="#">View Hostel Rules</a></li>
+        <li><a href="submit_request.php">Submit Request</a></li>
+        <li><a href="view_hostel_rules.php">View Hostel Rules</a></li>
         <li><a href="logout.php">Logout</a></li>
     </ul>
 </body>
