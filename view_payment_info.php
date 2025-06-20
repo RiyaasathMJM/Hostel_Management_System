@@ -56,6 +56,9 @@ $result = $stmt->get_result();
 
 <br>
 <a href="student_dashboard.php">Back to Dashboard</a>
+
+<br>
+
 </body>
 </html>
 
