@@ -16,6 +16,9 @@ if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
 
     <ul>
         
+        <li><a href="view_students.php">Students Details</a></li>
+        <li><a href="view_staff.php">Staff Details</a></li>
+        <li><a href="view_room_allocations.php">View Room Allocations</a></li>
         <li><a href="approve_requests.php">Room Approve Requests and View</a></li>
         <li><a href="payment_management.php">Payment Management</li>
         <li><a href="maintenance_management.php">Maintenance and Suggesion Requests</a></li>
