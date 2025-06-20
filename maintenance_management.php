@@ -69,6 +69,6 @@ $result = $conn->query($query);
     <?php endif; ?>
 
     <br>
-    <a href="admin_dashboard.php">Back to Dashboard</a>
+    <a href="admin_dashboard.php">Back</a>
 </body>
 </html>
