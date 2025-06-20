@@ -34,5 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="submit" value="Submit Request">
 </form>
 
+<a href="view_available_rooms.php">View Available Rooms</a><br>
 <a href="<?php echo ($_SESSION['user_type'] === 'student') ? 'student_dashboard.php' : 'staff_dashboard.php'; ?>">Back</a>
+
 
