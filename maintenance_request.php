@@ -8,7 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $issue = $_POST['issue'];
     $date = date('Y-m-d');
 
-    $stmt = $conn->prepare("INSERT INTO maintenance_requests (username, room_no, issue, request_date) VALUES (?, ?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO maintenance_requests (username, room_no, issue, request_date, status) VALUES (?, ?, ?, ?, 'Pending')");
+
     $stmt->bind_param("ssss", $username, $room_no, $issue, $date);
     if ($stmt->execute()) {
         echo "<p>Maintenance request submitted!</p>";
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h2>Submit Maintenance Request</h2>
+<h2>Submit Maintenance and Suggesion Request</h2>
 <form method="post">
     Room No: <input type="text" name="room_no" required><br>
     Issue Description: <textarea name="issue" required></textarea><br>
